@@ -1,2 +1,5 @@
-/.DS_Store
 build/
+*.dSYM
+.DS_Store
+*.o
+*~
