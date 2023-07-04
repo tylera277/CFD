@@ -5,6 +5,17 @@ project(step1_linear_convection)
 set(CMAKE_CXX_STANDARD 17)
 
 
-include_directories(src)
+find_package (Eigen3 3.3 REQUIRED)
 
-add_executable(step1_linear_convection src/main.cpp)
+
+
+#add_executable(step1_linear_convection src/main.cpp)
+
+#target_link_libraries(step1_linear_convection PUBLIC supplemental_files)
+#target_link_libraries(step1_linear_convection Eigen3::Eigen)
+
+
+add_executable(step1_linear_convection "src/main.cpp")
+
+target_include_directories(step1_linear_convection PUBLIC supplemental_files)
+target_link_libraries(step1_linear_convection PUBLIC Eigen3::Eigen)
