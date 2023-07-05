@@ -9,8 +9,6 @@
 #include <fstream>
 #include <Eigen/Dense>
 
-#include "supplemental_files/supplemental_files.hpp"
-
 
 int main()
 {
@@ -58,28 +56,17 @@ int main()
         for(int j  = 1; j < nx; j++)
         {
             u.coeffRef(j) = un.coeffRef(j) - (c * ( dt / dx ) ) * ( un.coeffRef(j) - un.coeffRef(j-1));
-
-            std::cout << "New Value: " << u.coeffRef(j) << "\n";
-
         }
-        std::cout << "------------\n"; 
-
 
     }
-
-    /*
-    ** Struggling on getting this to compile for some reason
-
-    // Handling the output of the calculated values in order to be plotted with 
-    // python in a separate program
-    SupplementalFiles sf;
-
-    sf.printFilesToCSV(outputFilename, u);
-    */
 
     std::ofstream output;
     output.open(outputFilename);
 
+    // +This loops sole purpose is to make it quicker for me 
+    // to plot the results in python with also a  little less work.
+    // +Outputs a row of zeros as a buffer, so python pandas takes these
+    // as the column names instead of my actual data.
     for(int iterator = 0; iterator < u.size(); iterator++)
     {
         if(iterator==(u.size()-1))
