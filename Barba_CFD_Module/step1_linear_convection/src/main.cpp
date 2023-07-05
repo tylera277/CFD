@@ -22,18 +22,14 @@ int main()
     double counter = 0;
     
 
-    const int nt = 2;
+    const int nt = 50;
     const double dt = 0.025;
 
     const int c = 1;
 
+    // Vectors for storing the calculated and reference values
     Eigen::VectorXf u( (int(nx)) );
     Eigen::VectorXf un( (int(nx)) );
-
-    Eigen::VectorXf test(1);
-    std::cout << "TEST1: " << test.coeffRef(0) << "\n";
-    test.coeffRef(0) = 5;
-    std::cout << "TEST2: " << test.coeffRef(0) << "\n";
 
     // Initializing the Initial conditions
     while(counter<nx)
@@ -86,12 +82,32 @@ int main()
 
     for(int iterator = 0; iterator < u.size(); iterator++)
     {
-        output << u.coeffRef(iterator) << ", ";
+        if(iterator==(u.size()-1))
+        {
+            output<<0;
+        }
+        else
+        {
+            output << 0 << ",";
+
+        }
 
 
     }
     output<<"\n";
+    for(int iterator = 0; iterator < u.size(); iterator++)
+    {
+        if(iterator==(u.size()-1))
+        {
+             output << u.coeffRef(iterator);
+        }
+        else
+        {
+            output << u.coeffRef(iterator) << ",";
 
+        }
+
+    }
     // Closing file after having finished printed out to it
     output.close();
     
