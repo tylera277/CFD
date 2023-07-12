@@ -110,7 +110,7 @@ int main()
         }
 
         // Print out resulting calculated vector into a designated csv file
-        if(currentTime == 0){
+        if(currentTime == 24){
             for(int y_position_printing  = 0; y_position_printing < ny; y_position_printing++)
             {
                 for(int x_position_printing = 0; x_position_printing < nx; x_position_printing++)

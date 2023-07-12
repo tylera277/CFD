@@ -1,0 +1,7 @@
+build/*
+main.dSYM
+.DS_Store
+
+settings.json
+*.xml
+*.iml
