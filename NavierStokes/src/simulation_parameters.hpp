@@ -18,10 +18,10 @@ namespace navier_stokes{
 
 
         // Number of grid points in the x-direction
-        const int x_grid_points = 100;
+        const int x_grid_points = 20;
 
         //         "            "       y-direction
-        const int y_grid_points = 100;
+        const int y_grid_points = 20;
 
 
         // Length of simulation in the x-direction
@@ -33,7 +33,7 @@ namespace navier_stokes{
 
 
         // The total amount of time I want the simulation to run for
-        const int total_simulation_time = 1e3;
+        const int total_simulation_time = 2;
 
         
         const double time_step_size = 1.0;
