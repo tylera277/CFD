@@ -1,7 +1,7 @@
-add_executable(test_simulation)
+add_executable(test_simulation )#test_simulation.cpp)
 
 target_sources(test_simulation PRIVATE 
-test_simulation.cpp 
+test_simulation.cpp
 ../../src/simulation/simulation.cpp
 ../../src/simulation/simulation.hpp 
 ../catch.hpp

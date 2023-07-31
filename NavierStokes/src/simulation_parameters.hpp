@@ -10,7 +10,7 @@ namespace navier_stokes{
     namespace sim_params{
 
         // The viscosity of the system that I'm simulating
-        const double viscosity = 1.0;
+        const double viscosity = 0.01;
 
         // The density of the system (kg/m3)
         const double density = 1.0;
@@ -18,10 +18,10 @@ namespace navier_stokes{
 
 
         // Number of grid points in the x-direction
-        const int x_grid_points = 20;
+        const int x_grid_points = 32;
 
         //         "            "       y-direction
-        const int y_grid_points = 20;
+        const int y_grid_points = 32;
 
 
         // Length of simulation in the x-direction
@@ -29,14 +29,6 @@ namespace navier_stokes{
 
          // Length of simulation in the y-direction
         const double length_y = 2;
-
-
-
-        // The total amount of time I want the simulation to run for
-        const int total_simulation_time = 2;
-
-        
-        const double time_step_size = 1.0;
 
 
         // Things im putting in this namespace to try out accessing them from here
@@ -51,6 +43,11 @@ namespace navier_stokes{
         const double dxi = 1 / dx;
         const double dyi = 1 / dy;
 
+        // The total amount of time I want the simulation to run for
+        const int total_simulation_time = 2;
+
+        
+        const double time_step_size = dx / 1400;
 
 
     }// namespace: simulation_parameters

@@ -100,6 +100,8 @@ namespace navier_stokes{
                  */
                 void CreateLaplacian();
 
+                double GetLaplacianValue(int xPos, int yPos);
+
                 void CreateLaplacianV2();
                 
                 /**
@@ -123,6 +125,8 @@ namespace navier_stokes{
                 void PrintPressure(std::string outputFileName);
 
                 void PrintVelocities(std::string outputFileName);
+
+                void PrintStarVelocities(std::string outputFileName);
 
                 void PrintLaplacian(std::string outputFileName);
 

@@ -14,7 +14,7 @@ int main()
 
     std::string outputFileName = "../outputData/";
 
-    double current_time_step = 1;
+    double current_time_step = 0;
 
     // I need to think of a better way to pass all of these parameters.
     // My current motivation for doing this is to be able to more easily test each unit of a class
@@ -25,13 +25,18 @@ int main()
         sim_params::viscosity, sim_params::density, sim_params::time_step_size
     );
 
+    std::cout << "Creating laplacian..." << std::endl;
+    sim.CreateLaplacian();
+    std::cout << "Laplacian created." << std::endl;
 
-    sim.CreateLaplacianV2();
+    //sim.PrintLaplacian("../outputData/22jul_laplacianv2.csv");
+    std::cout << "STEPPER: " << sim_params::time_step_size << std::endl;
 
-    sim.PrintLaplacian("../outputData/22jul_laplacianv2.csv");
-
-    while(current_time_step < sim_params::total_simulation_time)
+    //while(current_time_step < sim_params::total_simulation_time)
+    while(current_time_step < (2*sim_params::time_step_size))
     {   
+        
+        //sim.PrintVelocities(outputFileName + "30jul_u_velocities_one.csv");
 
 
         // Applying boundary conditions to the problem domain.
@@ -39,14 +44,18 @@ int main()
         // I will change this in the future
         sim.ApplyBoundaryConditions("generic");
 
-        
+
 
         // Compute an intermediate velocity by solving the momentum eqn.
         // but omitting the effect of pressure
         sim.predictor_step();
 
-        sim.PrintVelocities(outputFileName + "22jul_star_velocities.csv");
+        sim.PrintStarVelocities(outputFileName + "30jul_us_velocities_one.csv");
 
+        //sim.PrintVelocities(outputFileName + "22jul_star_velocities.csv");
+
+        // Updating the value calculated for velocities where youre now taking into 
+        // account the influence of pressure
         sim.corrector_step();
 
 
@@ -54,8 +63,9 @@ int main()
         current_time_step += sim_params::time_step_size;
 
     }
-    sim.PrintVelocities(outputFileName + "22jul_velocities.csv");
-    sim.PrintPressure(outputFileName + "22jul_pressure.csv");
+    sim.PrintStarVelocities(outputFileName + "30jul_us_velocities.csv");
+    sim.PrintVelocities(outputFileName + "30jul_u_velocities.csv");
+    sim.PrintPressure(outputFileName + "30jul_pressure.csv");
 
 
     return 0;
